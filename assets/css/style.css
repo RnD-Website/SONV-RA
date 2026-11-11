@@ -303,8 +303,11 @@ svg{display:block}
 /* ---------- 09 + 10 : Footer ---------- */
 .footer{height:100vh;margin-top:-85vh;z-index:6}
 .footer__wrapper{position:relative;height:100%;overflow:hidden;will-change:transform}
-.footer__bg{position:absolute;left:-.5vw;right:-.5vw;bottom:0;height:48.3vh;pointer-events:none;background:
-  radial-gradient(78% 100% at 50% 100%,#2F7BBE 0%,var(--ink) 30%,var(--accent) 52%,var(--soft) 68%,var(--ice) 82%,rgba(217,237,252,0) 100%);will-change:transform}
+/* The scroll animation lifts this layer up to ~8vh, so it extends 15vh below the footer.
+   The gradient keeps its original 48.3vh box; the extra strip continues its bottom edge. */
+.footer__bg{position:absolute;left:-.5vw;right:-.5vw;bottom:-15vh;height:63.3vh;pointer-events:none;transform-origin:50% 24.15vh;background:
+  radial-gradient(78% 100% at 50% 100%,#2F7BBE 0%,var(--ink) 30%,var(--accent) 52%,var(--soft) 68%,var(--ice) 82%,rgba(217,237,252,0) 100%) top/100% 48.3vh no-repeat,
+  linear-gradient(to right,var(--soft) 0%,var(--accent) 9.4%,var(--ink) 26.6%,#2F7BBE 50%,var(--ink) 73.4%,var(--accent) 90.6%,var(--soft) 100%) bottom/100% 15vh no-repeat;will-change:transform}
 .footer__h2--wrapper{position:relative;padding-top:1.04vw;text-align:center}
 .footer__title{font-size:12.4vw;white-space:nowrap}
 .footer__pompa{position:absolute;left:50%;top:21.8vh;width:33.75vw;margin-left:-16.875vw;transform:rotate(-50deg);will-change:transform;filter:drop-shadow(0 2vw 2.4vw rgba(20,45,70,.18))}

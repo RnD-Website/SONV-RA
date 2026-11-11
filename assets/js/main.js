@@ -294,7 +294,9 @@
       const P = $$('.advantages__panel'), G = $$('.advantages__gap'), Pimg = P.map(p => p.querySelector('img'));
       const FULL = '96.29vh', RED = '94.435vh', GAP = '1.855vh';
       gsap.set(Pimg, { top: 0, bottom: 'auto' });
-      const pin = () => P.forEach((p, i) => { Pimg[i].style.transform = `translate3d(0,${-p.offsetTop}px,0)`; });
+      // offsetTop is measured from .advantages__camera (includes the wrapper's top padding),
+      // so subtract the first panel's offset to pin each image to the top of the mask
+      const pin = () => P.forEach((p, i) => { Pimg[i].style.transform = `translate3d(0,${P[0].offsetTop - p.offsetTop}px,0)`; });
       a.eventCallback('onUpdate', pin);
       seg(a, '.advantages', { backgroundColor: '#FFFFFF', ease: 'power1.inOut' }, 0, 10);
       seg(a, P[0], { height: RED }, 0, 5); seg(a, G[0], { height: GAP }, 0, 5);
